@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "book",
+    "crispy_forms",
+    'crispy_bootstrap5',
+    "crispy_tailwind",
 ]
 
 MIDDLEWARE = [
@@ -81,6 +84,8 @@ DATABASES = {
     }
 }
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = 'tailwind'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -123,6 +128,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = "/media/"
