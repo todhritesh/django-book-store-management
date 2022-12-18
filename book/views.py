@@ -1,11 +1,21 @@
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import BookForm
+from django.db.models import Q
 # Create your views here.
 
 def home(req):
+    search_keyword = req.GET.get("q") if req.GET.get("q") else None
+    books = ""
+    if(search_keyword):
+        books = Book.objects.filter(
+            Q(title__contains=search_keyword) |
+            Q(author__contains=search_keyword)
+            )
+    else:
+        books = Book.objects.all()
     data = {
-        "books":Book.objects.all()
+        "books": books
     }
     return render(req,"home.html",data)
 
